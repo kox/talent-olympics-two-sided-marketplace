@@ -2,7 +2,6 @@ use anchor_lang::prelude::*;
 
 #[account]
 pub struct ServiceNFT {
-    /* pub service_ta: Pubkey, */
     pub marketplace: Pubkey,
     pub creator: Pubkey,
     pub price: u64,

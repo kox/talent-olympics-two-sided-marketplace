@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 
 use mpl_core::{
     instructions::AddPluginV1CpiBuilder, types::{
-        Attribute, Attributes, Creator, DataState, FreezeDelegate, PermanentFreezeDelegate, PermanentTransferDelegate, Plugin, PluginAuthority, PluginAuthorityPair, Royalties, RuleSet, TransferDelegate
+        Attribute, Attributes, Creator, DataState, PermanentFreezeDelegate, PermanentTransferDelegate, Plugin, PluginAuthority, PluginAuthorityPair, Royalties, RuleSet, TransferDelegate
     }, ID 
 };
 
@@ -26,11 +26,6 @@ pub struct ListService<'info> {
         bump = marketplace.bump
     )]
     marketplace: Account<'info, Marketplace>,
-
-    /* #[account(
-        owner = service,
-    )]
-    service_ta: InterfaceAccount<'info, BaseAssetV1>, */
 
     /// The address of the new asset.
     #[account(mut)]

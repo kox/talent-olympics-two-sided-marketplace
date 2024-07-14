@@ -25,7 +25,5 @@ pub mod two_sided_marketplace_for_services {
     pub fn buy_service(ctx: Context<BuyService>) -> Result<()> {
         ctx.accounts.buy_service()
     }
-
-    
 }
 

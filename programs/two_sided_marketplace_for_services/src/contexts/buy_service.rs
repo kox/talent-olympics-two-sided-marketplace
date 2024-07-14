@@ -2,15 +2,10 @@ use anchor_lang::prelude::*;
 use anchor_lang::system_program;
 
 use mpl_core::instructions::TransferV1CpiBuilder;
-use mpl_core::{
-    instructions::{ UpdatePluginV1CpiBuilder, RemovePluginV1CpiBuilder }, 
-    types::{
-        Attribute, Attributes, Creator, DataState, FreezeDelegate, Plugin, PluginAuthority, Royalties, RuleSet, TransferDelegate, PluginType
-    }, ID 
-};
+use mpl_core::ID;
 
 use crate::{
-    constants::{ MARKETPLACE_SEED, SERVICE_SEED }, errors::MarketplaceErrors, states::{ marketplace, Marketplace, ServiceNFT }
+    constants::{ MARKETPLACE_SEED, SERVICE_SEED }, errors::MarketplaceErrors, states::{ Marketplace, ServiceNFT }
 };
 
 #[derive(Accounts)]
@@ -21,9 +16,6 @@ pub struct BuyService<'info> {
     /// CHECK: account read from service
     #[account(mut, address = service.creator)]
     seller: UncheckedAccount<'info>,
-
-    /* #[account(mut)]
-    pub creator: UncheckedAccount<'info>, */
 
     #[account(
         mut,
@@ -53,7 +45,7 @@ pub struct BuyService<'info> {
     pub asset: AccountInfo<'info>,
 
     /// CHECK: Checked in mpl-core
-    #[account(address = mpl_core::ID)]
+    #[account(address = ID)]
     pub mpl_core: AccountInfo<'info>,   
 
     /// The system program.
